@@ -36,6 +36,10 @@ namespace NSE.Identidade.API
             app.UseSwaggerConfiguration();
             
             app.UseApiConfiguration(env);
+
+            app.UseCors(option => option.AllowAnyHeader()
+                                  .AllowAnyMethod()
+                                  .AllowAnyOrigin());
         }
     }
 }

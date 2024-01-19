@@ -26,8 +26,14 @@ namespace Nse.Identidade.Api.Controllers
             _appSettings = appSettings.Value;
         }
 
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok(new { live = true });
+        }
+
         [HttpPost("nova-conta")]
-        public async Task<ActionResult> Registrar(UsuarioRegistro usuarioRegistro)
+        public async Task<ActionResult> Registrar([FromBody] UsuarioRegistro usuarioRegistro)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
@@ -54,7 +60,7 @@ namespace Nse.Identidade.Api.Controllers
         }
 
         [HttpPost("autenticar")]
-        public async Task<ActionResult> Login(UsuarioLogin usuarioLogin)
+        public async Task<ActionResult> Login([FromBody] UsuarioLogin usuarioLogin)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 

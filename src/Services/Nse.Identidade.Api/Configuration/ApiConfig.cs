@@ -21,6 +21,8 @@ namespace Nse.Identidade.Api.Configuration
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("Development");
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
